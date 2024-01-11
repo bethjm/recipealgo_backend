@@ -1,5 +1,6 @@
 from django.db import models
 from multiselectfield import MultiSelectField
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Recipe(models.Model):
@@ -57,7 +58,7 @@ class Recipe(models.Model):
         (UNDER60, 'Under 60 Minutes'),
         (OVER60, 'Over 60 minutes, less than 3 hours'),
         (SLOWCOOK, 'Slow cooker meal, set it and forget it'),
-        (MULTIDAY, 'Can day multiple days to make'),
+        (MULTIDAY, 'Can take multiple days to make'),
     ]
 
     SLOWCOOKER = 'slowcooker'
@@ -79,23 +80,20 @@ class Recipe(models.Model):
         (GRILL, 'Grill')
     ]
 
-
-
-
-
     id = models.AutoField(primary_key=True)
-    name = models.CharFeild(max_length=255)
-    ingredients = models.CharFeild(max_length=1000)
+    name = models.CharField(max_length=255, blank=False, null=False)
+    ingredients = models.CharField(max_length=1000, blank=False, null=False)
     experience_level = MultiSelectField(max_length=255, choices=EXPERIENCE_CHOICES, blank=False, null=False)
     meal_type = MultiSelectField(max_length=255, choices=MEAL_TYPES, blank=False, null=False)
     equipment_needed = MultiSelectField(max_length=255, choices=SPECIAL_EQUIPMENT, blank=False, null=False)
     allergen = MultiSelectField(max_length=255, choices=ALLERGEN_TYPES, blank=False, null=False)
     time_commitment = MultiSelectField(max_length=255, choices=TIME_TYPES, blank=False, null=False)
-    instructions = models.TextField()
+    instructions = models.TextField(blank=False, null=False)
 
     def clean(self):
-        if ',' not in self.ingredients and ' ' not in self.ingredients:
-            raise ValidationError("Please separate each ingredient with commas or spaces.")
+        super().clean()  # Call the parent clean method
+        if ',' not in self.ingredients:
+            raise ValidationError("Please separate each ingredient with commas!")
 
     def save(self, *args, **kwargs):
         # Convert ingredients to lowercase before saving
