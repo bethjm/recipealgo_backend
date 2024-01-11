@@ -35,6 +35,7 @@ class Recipe(models.Model):
     SHELLFISH = 'shellfish'
     FISH = 'fish'
     MILK = 'milk'
+    NONE ='none'
     ALLERGEN_TYPES = [
         (SESAME, 'Sesame'),
         (GLUTEN, 'Gluten'),
@@ -46,6 +47,7 @@ class Recipe(models.Model):
         (SHELLFISH, 'Shellfish'),
         (FISH, 'Fish'),
         (MILK, 'Milk'),
+        (NONE, 'None')
     ]
 
     UNDER30 = 'under30'
@@ -69,6 +71,7 @@ class Recipe(models.Model):
     IMMERSIONBLENDER = 'immersionblender'
     FOODPROCESSOR = 'foodprocessor'
     GRILL = 'grill'
+    NONE = 'none'
     SPECIAL_EQUIPMENT = [
         (SLOWCOOKER, 'Slow Cooker'),
         (INSTANTPOT, 'Pressure Cooker'),
@@ -77,7 +80,8 @@ class Recipe(models.Model):
         (BLENDER, 'Blender'),
         (IMMERSIONBLENDER, 'Immersion Blender'),
         (FOODPROCESSOR, 'Food Processor'),
-        (GRILL, 'Grill')
+        (GRILL, 'Grill'),
+        (NONE, 'None')
     ]
 
     id = models.AutoField(primary_key=True)
