@@ -35,7 +35,7 @@ class Recipe(models.Model):
     SHELLFISH = 'shellfish'
     FISH = 'fish'
     MILK = 'milk'
-    NONE ='none'
+    NONE_ALLERGEN ='none_allergen'
     ALLERGEN_TYPES = [
         (SESAME, 'Sesame'),
         (GLUTEN, 'Gluten'),
@@ -47,7 +47,7 @@ class Recipe(models.Model):
         (SHELLFISH, 'Shellfish'),
         (FISH, 'Fish'),
         (MILK, 'Milk'),
-        (NONE, 'None'),
+        (NONE_ALLERGEN, 'None'),
     ]
 
     UNDER30 = 'under30'
@@ -71,7 +71,7 @@ class Recipe(models.Model):
     IMMERSIONBLENDER = 'immersionblender'
     FOODPROCESSOR = 'foodprocessor'
     GRILL = 'grill'
-    NONE = 'none'
+    NONE_EQUIPMENT = 'none-equipment'
     SPECIAL_EQUIPMENT = [
         (SLOWCOOKER, 'Slow Cooker'),
         (INSTANTPOT, 'Pressure Cooker'),
@@ -81,7 +81,7 @@ class Recipe(models.Model):
         (IMMERSIONBLENDER, 'Immersion Blender'),
         (FOODPROCESSOR, 'Food Processor'),
         (GRILL, 'Grill'),
-        (NONE, 'None')
+        (NONE_EQUIPMENT, 'None')
     ]
 
     id = models.AutoField(primary_key=True)
@@ -93,15 +93,3 @@ class Recipe(models.Model):
     allergen = MultiSelectField(max_length=255, choices=ALLERGEN_TYPES, blank=False, null=False)
     time_commitment = MultiSelectField(max_length=255, choices=TIME_TYPES, blank=False, null=False)
     instructions = models.TextField(blank=False, null=False)
-
-    # def clean(self):
-    #     super().clean()  # Call the parent clean method
-    #     if ',' not in self.ingredients:
-    #         raise ValidationError("Please separate each ingredient with commas!")
-
-    def save(self, *args, **kwargs):
-        # Convert ingredients to lowercase before saving
-        self.ingredients = self.ingredients.lower()
-
-        self.full_clean()  # Ensure validation is triggered before saving
-        super().save(*args, **kwargs)
