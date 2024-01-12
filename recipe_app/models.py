@@ -1,6 +1,6 @@
 from django.db import models
 from multiselectfield import MultiSelectField
-from django.core.exceptions import ValidationError
+# from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Recipe(models.Model):
@@ -94,10 +94,10 @@ class Recipe(models.Model):
     time_commitment = MultiSelectField(max_length=255, choices=TIME_TYPES, blank=False, null=False)
     instructions = models.TextField(blank=False, null=False)
 
-    def clean(self):
-        super().clean()  # Call the parent clean method
-        if ',' not in self.ingredients:
-            raise ValidationError("Please separate each ingredient with commas!")
+    # def clean(self):
+    #     super().clean()  # Call the parent clean method
+    #     if ',' not in self.ingredients:
+    #         raise ValidationError("Please separate each ingredient with commas!")
 
     def save(self, *args, **kwargs):
         # Convert ingredients to lowercase before saving

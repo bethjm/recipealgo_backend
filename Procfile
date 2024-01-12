@@ -1,2 +1,2 @@
-web: gunicorn recipealgo_backend.recipe_project.wsgi
+web: gunicorn 'recipe_project.wsgi'
 
