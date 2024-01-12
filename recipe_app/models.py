@@ -47,7 +47,7 @@ class Recipe(models.Model):
         (SHELLFISH, 'Shellfish'),
         (FISH, 'Fish'),
         (MILK, 'Milk'),
-        (NONE, 'None')
+        (NONE, 'None'),
     ]
 
     UNDER30 = 'under30'
