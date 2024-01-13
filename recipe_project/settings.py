@@ -81,14 +81,15 @@ WSGI_APPLICATION = 'recipe_project.wsgi.application'
 # 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+####THIS IS FOR LOCAL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': "recipes",
         'USER': '',
         'PASSWORD': '',
-        'HOST': 'localhost'
-    }
+        'HOST': 'ec2-3-232-218-211.compute-1.amazonaws.com',
+        'PORT': '5432',    }
 }
 
 
