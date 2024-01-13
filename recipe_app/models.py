@@ -96,4 +96,4 @@ class Recipe(models.Model):
     equipment_needed = MultiSelectField(max_length=255, choices=SPECIAL_EQUIPMENT, blank=False, null=False, default=NONE_EQUIPMENT)
     allergen = MultiSelectField(max_length=255, choices=ALLERGEN_TYPES, blank=False, null=False, default=NONE_ALLERGEN)
     time_commitment = MultiSelectField(max_length=255, choices=TIME_TYPES, blank=False, null=False, default=UNDER30)
-    instructions = models.TextField(blank=False, null=False)
+    instructions = models.TextField(blank=False, null=False, default="no instructions, sorry")
