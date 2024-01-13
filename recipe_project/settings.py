@@ -88,8 +88,8 @@ DATABASES = {
         'NAME': "recipes",
         'USER': '',
         'PASSWORD': '',
-        'HOST': 'ec2-3-232-218-211.compute-1.amazonaws.com',
-        'PORT': '5432',    }
+        'HOST': 'postgres://wwefmfwmmpyryk:75858cbd3fea8c218b0adae01110c8802baaa48a7dcedb8fe7bcf0d831cbb667@ec2-3-232-218-211.compute-1.amazonaws.com:5432/d4k49rrdufbjb1',
+   }
 }
 
 
