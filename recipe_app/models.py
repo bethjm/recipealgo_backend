@@ -91,7 +91,7 @@ class Recipe(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=False, null=False)
     ingredients = models.CharField(max_length=1000, blank=False, null=False)
-    # experience_level = MultiSelectField(max_length=255, choices=EXPERIENCE_CHOICES, blank=False, null=False)
+    experience_level = MultiSelectField(max_length=255, choices=EXPERIENCE_CHOICES, blank=False, null=False)
     # meal_type = MultiSelectField(max_length=255, choices=MEAL_TYPES, blank=False, null=False)
     # equipment_needed = MultiSelectField(max_length=255, choices=SPECIAL_EQUIPMENT, blank=False, null=False)
     # allergen = MultiSelectField(max_length=255, choices=ALLERGEN_TYPES, blank=False, null=False)
