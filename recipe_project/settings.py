@@ -84,15 +84,15 @@ WSGI_APPLICATION = 'recipe_project.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 ####THIS IS FOR LOCAL
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': "recipes",
-#         'USER': '',
-#         'PASSWORD': '',
-#         'HOST': 'postgres://wwefmfwmmpyryk:75858cbd3fea8c218b0adae01110c8802baaa48a7dcedb8fe7bcf0d831cbb667@ec2-3-232-218-211.compute-1.amazonaws.com:5432/d4k49rrdufbjb1',
-#    }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "recipes",
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+   }
+}
 
 
 # Update the default database configuration in the DATABASES dictionary
