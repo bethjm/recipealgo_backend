@@ -4,7 +4,6 @@ from multiselectfield import MultiSelectField
 
 # Create your models here.
 class Recipe(models.Model):
-
     BEGINNER = 'beginner'
     INTERMEDIATE = 'intermediate'
     ADVANCED = 'advanced'
@@ -92,4 +91,4 @@ class Recipe(models.Model):
     equipment_needed = MultiSelectField(max_length=255, choices=SPECIAL_EQUIPMENT, blank=False, null=False)
     allergen = MultiSelectField(max_length=255, choices=ALLERGEN_TYPES, blank=False, null=False)
     time_commitment = MultiSelectField(max_length=255, choices=TIME_TYPES, blank=False, null=False)
-    instructions = models.TextField(blank=False, null=False)
+    # instructions = models.TextField(blank=False, null=False)
