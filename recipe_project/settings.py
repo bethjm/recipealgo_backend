@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,16 +84,21 @@ WSGI_APPLICATION = 'recipe_project.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 ####THIS IS FOR LOCAL
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "recipes",
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'postgres://wwefmfwmmpyryk:75858cbd3fea8c218b0adae01110c8802baaa48a7dcedb8fe7bcf0d831cbb667@ec2-3-232-218-211.compute-1.amazonaws.com:5432/d4k49rrdufbjb1',
-   }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': "recipes",
+#         'USER': '',
+#         'PASSWORD': '',
+#         'HOST': 'postgres://wwefmfwmmpyryk:75858cbd3fea8c218b0adae01110c8802baaa48a7dcedb8fe7bcf0d831cbb667@ec2-3-232-218-211.compute-1.amazonaws.com:5432/d4k49rrdufbjb1',
+#    }
+# }
 
+db_from_env = dj_database_url.config(conn_max_age=600)
+
+# Update the default database configuration in the DATABASES dictionary
+DATABASES = {'default': {}}
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
