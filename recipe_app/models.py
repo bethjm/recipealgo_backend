@@ -1,12 +1,12 @@
 from django.db import models
 # from multiselectfield import MultiSelectField
-from multiselectfield import MultiSelectField as BaseMultiSelectField
+from multiselectfield import MultiSelectField
 
-# from django.core.exceptions import ValidationError
-class MultiSelectField(BaseMultiSelectField):
+# Add the _get_flatchoices method directly to MultiSelectField
+class MultiSelectField(MultiSelectField):
     def _get_flatchoices(self):
         return self.flatchoices
-        
+
 # Create your models here.
 class Recipe(models.Model):
     BEGINNER = 'beginner'
@@ -91,9 +91,9 @@ class Recipe(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=False, null=False)
     ingredients = models.CharField(max_length=1000, blank=False, null=False)
-    experience_level = MultiSelectField(max_length=255, choices=EXPERIENCE_CHOICES, blank=False, null=False)
-    meal_type = MultiSelectField(max_length=255, choices=MEAL_TYPES, blank=False, null=False)
-    equipment_needed = MultiSelectField(max_length=255, choices=SPECIAL_EQUIPMENT, blank=False, null=False)
-    allergen = MultiSelectField(max_length=255, choices=ALLERGEN_TYPES, blank=False, null=False)
-    time_commitment = MultiSelectField(max_length=255, choices=TIME_TYPES, blank=False, null=False)
+    # experience_level = MultiSelectField(max_length=255, choices=EXPERIENCE_CHOICES, blank=False, null=False)
+    # meal_type = MultiSelectField(max_length=255, choices=MEAL_TYPES, blank=False, null=False)
+    # equipment_needed = MultiSelectField(max_length=255, choices=SPECIAL_EQUIPMENT, blank=False, null=False)
+    # allergen = MultiSelectField(max_length=255, choices=ALLERGEN_TYPES, blank=False, null=False)
+    # time_commitment = MultiSelectField(max_length=255, choices=TIME_TYPES, blank=False, null=False)
     # instructions = models.TextField(blank=False, null=False)
