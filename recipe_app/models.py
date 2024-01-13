@@ -1,7 +1,12 @@
 from django.db import models
-from multiselectfield import MultiSelectField
-# from django.core.exceptions import ValidationError
+# from multiselectfield import MultiSelectField
+from multiselectfield import MultiSelectField as BaseMultiSelectField
 
+# from django.core.exceptions import ValidationError
+class MultiSelectField(BaseMultiSelectField):
+    def _get_flatchoices(self):
+        return self.flatchoices
+        
 # Create your models here.
 class Recipe(models.Model):
     BEGINNER = 'beginner'
