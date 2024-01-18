@@ -21,12 +21,12 @@ class Recipe(models.Model):
     BREAKFAST = 'breakfast'
     DINNER = 'dinner'
     SNACK = 'snack'
-    DESERT = 'desert'
+    DESERT = 'dessert'
     MEAL_TYPES= [
             (BREAKFAST, 'Breakfast'),
             (DINNER, 'Dinner'),
             (SNACK, 'Snack'),
-            (DESERT, 'Desert'),   
+            (DESERT, 'Dessert'),   
         ]
 
     SESAME = 'sesame'
